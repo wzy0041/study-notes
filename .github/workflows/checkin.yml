@@ -1,0 +1,31 @@
+name: TG Auto Checkin
+
+on:
+  # 每天北京时间早上 9 点运行 (UTC时间 1:00)
+  schedule:
+    - cron: '0 1 * * *'
+  # 允许手动点击按钮触发测试
+  workflow_dispatch:
+
+jobs:
+  checkin:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: 下载代码
+      uses: actions/checkout@v3
+
+    - name: 安装 Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.9'
+
+    - name: 安装依赖库
+      run: pip install telethon
+
+    - name: 运行签到脚本
+      env:
+        TG_API_ID: ${{ secrets.TG_API_ID }}
+        TG_API_HASH: ${{ secrets.TG_API_HASH }}
+        TG_SESSION: ${{ secrets.TG_SESSION }}
+      run: python main.py
