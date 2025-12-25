@@ -11,7 +11,6 @@ session_string = os.environ['TG_SESSION']
 # ⚠️⚠️⚠️ 重点：请修改这里 ⚠️⚠️⚠️
 # 打开你的 Telegram，点进那个机器人，看它的“用户名”(Username)
 # 也就是带 @ 的那个名字（填的时候不要带 @）
-# 根据你的截图，看起来像是 'SheerID_Verify_Bot'，请务必确认！
 BOT_USERNAME = 'sheeridverifier_bot' 
 
 async def main():
